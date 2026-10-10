@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+  --font-serif: "Songti SC", "STSong", "Noto Serif SC", "Source Han Serif SC", "PMingLiU", Georgia, serif;
+  --color-ink: #14120f;
+  --color-paper: #f3ecdf;
+  --color-copper: #e0a36a;
+  --color-mist: #b3a89a;
+  --color-line: #3a342c;
+  --color-panel: #1c1915;
+  --color-deep: #100e0c;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-paper);
+  background:
+    radial-gradient(900px 420px at 80% -10%, rgba(224, 163, 106, 0.16), transparent 55%),
+    radial-gradient(700px 480px at -10% 110%, rgba(90, 122, 140, 0.14), transparent 50%),
+    var(--color-deep);
+}
+
+::selection {
+  background: rgba(224, 163, 106, 0.35);
+  color: var(--color-paper);
+}
+
+button,
+input {
+  font-family: inherit;
+}
