@@ -62,7 +62,7 @@ export function UploadPanel({
           variant="outline"
           size="sm"
           disabled={busy}
-          onClick={() => void loadSample('/samples/portrait.jpg', '人像示例.jpg', onFile, onSampleError)}
+          onClick={() => void loadSample(sampleUrl('portrait.jpg'), '人像示例.jpg', onFile, onSampleError)}
         >
           人像示例
         </Button>
@@ -70,7 +70,7 @@ export function UploadPanel({
           variant="outline"
           size="sm"
           disabled={busy}
-          onClick={() => void loadSample('/samples/landscape.jpg', '风景示例.jpg', onFile, onSampleError)}
+          onClick={() => void loadSample(sampleUrl('landscape.jpg'), '风景示例.jpg', onFile, onSampleError)}
         >
           风景示例
         </Button>
@@ -131,6 +131,11 @@ function DepthThumb({ depth, inverted }: { depth: DepthField; inverted: boolean 
       className="max-h-40 w-full rounded-xl border border-white/10 bg-black object-contain"
     />
   )
+}
+
+function sampleUrl(file: string) {
+  const base = import.meta.env.BASE_URL
+  return `${base.endsWith('/') ? base : `${base}/`}samples/${file}`
 }
 
 async function loadSample(

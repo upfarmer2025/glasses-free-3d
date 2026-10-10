@@ -27,6 +27,28 @@ npm run preview
 
 建议使用较新的桌面版 Chrome、Edge、Firefox 或 Safari。页面需要 WebGL 和 WebAssembly。
 
+## 部署
+
+本地 `npm run dev` 和 `npm run build` 仍把资源放在站点根路径 `/`。挂到子路径（GitHub Pages 项目站）时，构建前设置相对路径：
+
+```bash
+VITE_BASE_PATH=./ npm run build
+```
+
+应用没有前端路由。构建会多写一份 `404.html`，给 GitHub Pages 做未知路径回退。`vercel.json` 给 Vercel 做同样的回退，`netlify.toml` 和 `public/_redirects` 给 Netlify 与 Cloudflare Pages 使用。
+
+### GitHub Pages
+
+`gh-pages` 分支是已经构建好的站点。启用公开地址只需要这一步：
+
+1. 打开仓库的 Settings → Pages：<https://github.com/upfarmer2025/glasses-free-3d/settings/pages>
+2. Build and deployment 里 Source 选 **Deploy from a branch**。
+3. Branch 选 **gh-pages**，文件夹选 **/ (root)**，保存。
+
+站点地址是 <https://upfarmer2025.github.io/glasses-free-3d/> 。
+
+合并 `.github/workflows/pages.yml` 之后，也可以把 Source 改成 **GitHub Actions**。之后每次推送到 `main` 会自动重新构建并发布。
+
 ## 怎么用
 
 - 把 JPG、PNG 或 WebP 拖进页面，或点击选择文件。单张不超过 20 MB。
